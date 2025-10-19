@@ -4,7 +4,7 @@ local workspace_dir = vim.fn.stdpath("data")
 	.. "jdtls-workspace"
 	.. package.config:sub(1, 1)
 	.. project_name
-local os_name = vim.loop.os_uname().sysname
+local os_name = vim.uv.os_uname().sysname
 
 return {
 	cmd = {
@@ -47,6 +47,10 @@ return {
 		workspace_dir,
 	},
 
+	filetypes = {
+		"java",
+	},
+
 	root_dir = vim.fs.root(0, {
 		"gradlew",
 		".git",
@@ -54,7 +58,16 @@ return {
 	}),
 
 	settings = {
-		java = {},
+		java = {
+			configuration = {
+				runtimes = {
+					{
+						name = "JavaSE-1.8",
+						path = "/usr/lib/jvm/java-8-openjdk",
+					},
+				},
+			},
+		},
 	},
 
 	init_options = {

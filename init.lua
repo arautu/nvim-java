@@ -42,7 +42,7 @@ vim.o.smartcase = true
 
 vim.o.signcolumn = "yes" -- Keep signcolumn on by default
 vim.o.updatetime = 250
-vim.o.timeoutlen = 300
+vim.o.timeoutlen = 1000 -- Mapped sequence wait time
 
 -- Configure how new splits should be opened
 vim.o.splitright = true

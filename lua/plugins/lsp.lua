@@ -13,14 +13,11 @@ return {
 		},
 	},
 	{
-		"williamboman/mason-lspconfig.nvim",
-		opts = {
-			automatic_enable = {
-				exclude = {
-					--needs external plugin
-					-- "jdtls",
-				},
-			},
+		"mason-org/mason-lspconfig.nvim",
+		opts = {},
+		dependencies = {
+			{ "mason-org/mason.nvim", opts = {} },
+			"neovim/nvim-lspconfig",
 		},
 	},
 	{ "mfussenegger/nvim-jdtls" },
