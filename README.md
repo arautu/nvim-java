@@ -6,20 +6,23 @@ Montagem de uma IDE para Java usando os recursos recentes do Neovim 0.11.
 
 ## LSP
 
-Para mais detalhes sobre a nova forma de configuração do LSP, veja em `help lsp-quickstart` ou [neovim-lsp](https://neovim.io/doc/user/lsp.html "LSP"). Há também o artigo [anders-neovim](https://gpanders.com/blog/whats-new-in-neovim-0-11/ "What's New in Neovim 0.11")
+Para mais detalhes sobre a nova forma de configuração do LSP, veja no próprio neovim, `help lsp-quickstart` ou [neovim-lsp](https://neovim.io/doc/user/lsp.html "LSP"). Há também um ótimo artigo de [Gregory Anders](https://gpanders.com/blog/whats-new-in-neovim-0-11/ "What's New in Neovim 0.11").
 
 
-## jdtls
+## JDTLS
 
-[JDTLS](https://github.com/eclipse-jdtls/eclipse.jdt.ls/wiki "eclipse.jdt.ls wiki") é um LSP (Language Server Protocol), para Java, chamado **eclipse.jdt.ls**. Foi usado o plugin [nvim-jdtls](https://github.com/mfussenegger/nvim-jdtls) para configuração do cliente nativo do nvim com o servidor. O trabalho de [LukeElrod](https://github.com/LukeElrod/nvim/tree/master) serviu de consulta para a configuração do nvim-jdtls, embora ele não use o nvim-lspconfig. A fonte oficial do JDTLS encontra-se em: [jdtls-cli](https://github.com/eclipse-jdtls/eclipse.jdt.ls/wiki/Running-the-JAVA-LS-server-from-the-command-line). Considerando a configuração adotada para o JDTLS, devemos tomar nota do seguintes pontos:
-- JDTLS usa um workspace em `/home/arauto/.local/share/nvim-java/jdtls-workspace`.
-- Após a instalação do JDTLS com o Mason, a configuração vai procurar pelo seguinte arquivo: `org.eclipse.equinox.launcher_1.7.0.v20250519-0528.jar` em `~/.local/share/nvim-java/mason/packages/jdtls/plugins` 
-- Foi configurado o caminho para a JVM do Java 8. Para configurar outras versões de JVM, consulte em [JDTLS](https://github.com/eclipse-jdtls/eclipse.jdt.ls/wiki) os nomes corretos, conforme está descrito em: *enum ExecutionEnvironment*.
+[JDTLS](https://github.com/eclipse-jdtls/eclipse.jdt.ls/wiki "eclipse.jdt.ls wiki") é um LSP (Language Server Protocol), para Java, chamado **eclipse.jdt.ls**. Foi usado o plugin [nvim-jdtls](https://github.com/mfussenegger/nvim-jdtls) para configuração do cliente nativo do nvim com o servidor. O trabalho de [LukeElrod](https://github.com/LukeElrod/nvim/tree/master) serviu de consulta para a configuração do nvim-jdtls, embora ele use o plugin nvim-lspconfig. A fonte oficial do JDTLS encontra-se em: [Running the JAVA LS server from the command line](https://github.com/eclipse-jdtls/eclipse.jdt.ls/wiki/Running-the-JAVA-LS-server-from-the-command-line).
+
+Considerando a configuração adotada para o JDTLS neste trabalho, devemos tomar nota do seguintes pontos:
+- Instale o servidor com o comando `MasonInstall jdtls`.
+- JDTLS usa um workspace em `~/.local/share/nvim-java/jdtls-workspace`.
+- Após a instalação do JDTLS com o Mason, JDTLS vai procurar pelo seguinte arquivo: `org.eclipse.equinox.launcher_1.7.0.v20250519-0528.jar` em `~/.local/share/nvim-java/mason/packages/jdtls/plugins` 
+- Foi configurado o caminho para a JVM do Java 8. Para configurar outras versões de JVM, consulte em [JDTLS](https://github.com/eclipse-jdtls/eclipse.jdt.ls/wiki) os nomes corretos, procure no documento pela referência: *enum ExecutionEnvironment*.
 
 
 ### Teclas de atalho
 
-As teclas de atalho e suas funções, detalhadas em [nvim-jdtls](https://github.com/mfussenegger/nvim-jdtls), estão funcionando automaticamente, sem qualquer configuração extra, graças ao [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig). No entanto, as teclas de atalho são diferente, conforme é relatado em `help lsp-quickstart`. Outras funcionalidades, que não têm teclas de atalho, estão presentes em "code action" e dependem do contexto para serem apresentadas no menu. 
+As teclas de atalho e suas funções, detalhadas em [nvim-jdtls](https://github.com/mfussenegger/nvim-jdtls), estão funcionando automaticamente, sem qualquer configuração extra, graças ao [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig). No entanto, as teclas usada como atalhos são diferentes daquelas menciondas em nvim-jdtls. Mais detalhes sobre as teclas de atalho padrão para o LSP, encontra-se em `help lsp-quickstart`.
 
 Abaixo, estão algumas das teclas de atalho disponíveis:
 - "grn" -> renomeaar;
