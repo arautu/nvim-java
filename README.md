@@ -11,14 +11,15 @@ Para mais detalhes sobre a nova forma de configuração do LSP, veja no próprio
 
 ## JDTLS
 
-[JDTLS](https://github.com/eclipse-jdtls/eclipse.jdt.ls/wiki "eclipse.jdt.ls wiki") é um LSP (Language Server Protocol), para Java, chamado **eclipse.jdt.ls**. Foi usado o plugin [nvim-jdtls](https://github.com/mfussenegger/nvim-jdtls) para configuração do cliente nativo do nvim com o servidor. O trabalho de [LukeElrod](https://github.com/LukeElrod/nvim/tree/master) serviu de consulta para a configuração do nvim-jdtls, embora ele use o plugin nvim-lspconfig. A fonte oficial do JDTLS encontra-se em: [Running the JAVA LS server from the command line](https://github.com/eclipse-jdtls/eclipse.jdt.ls/wiki/Running-the-JAVA-LS-server-from-the-command-line).
+Foi instalado o [JDTLS](https://github.com/eclipse-jdtls/eclipse.jdt.ls/wiki), como um servidor de LSP (Language Server Protocol), para Java, chamado **eclipse.jdt.ls** e para cliente, foi usado o [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig), nativo do Nvim. Para a configuração do JDTLS, seguiu-se as orientação do [documento de configuração do JDTLS para o nvim-lspconfig](https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#jdtls) e foi consultado também a [configuração pré-existente do JDTLS no nvim-lpsconfig](https://github.com/neovim/nvim-lspconfig/blob/master/lsp/jdtls.lua#L89).
 
-Considerando a configuração adotada para o JDTLS neste trabalho, devemos tomar nota do seguintes pontos:
-- Instale o servidor com o comando `MasonInstall jdtls`.
-- JDTLS usa um workspace em `~/.local/share/nvim-java/jdtls-workspace`.
-- Após a instalação do JDTLS com o Mason, JDTLS vai procurar pelo seguinte arquivo: `org.eclipse.equinox.launcher_1.7.0.v20250519-0528.jar` em `~/.local/share/nvim-java/mason/packages/jdtls/plugins` 
-- Foi configurado o caminho para a JVM do Java 8. Para configurar outras versões de JVM, consulte em [JDTLS](https://github.com/eclipse-jdtls/eclipse.jdt.ls/wiki) os nomes corretos, procure no documento pela referência: *enum ExecutionEnvironment*.
+Estas configurações colocam o workspace em `~/.cache/nvim-java/jdtls/workspace`.
 
+Em `~\.bashrc` foi colocado a seguinte variável de ambiente.
+
+```bash
+export JDTLS_JVM_ARGS="-Xmx1g --add-modules=ALL-SYSTEM --add-opens java.base/java.util=ALL-UNNAMED --add-opens java.base/java.lang=ALL-UNNAMED"
+```
 
 ### Teclas de atalho
 
@@ -36,6 +37,22 @@ Abaixo, estão algumas das teclas de atalho disponíveis:
 - CTRL-} (wsl), CTRL-] -> vá para definição;
 - gq -> formatação;
 - K -> Descrição, documentação da função ou método sob o cursor.
+
+
+### Testar o LSP
+
+Se quiser testar o LSP, mesmo sem ter um projeto em java, faça `set ft=java` e veja em `messages` ou `LspInfo`.
+
+```neovim
+set ft=java
+messages
+LspInfo
+checkhealth vim.lsp
+```
+1 Força o neovim a reconhecer o arquivo como do tipo java.
+2 Permite verificar se o jdtls foi carregado corretamente.
+3 Maneira mais detalhada de ver se o jdtls foi carregado corretamente.
+4 Mesmo que LspInfo.
 
 
 # Debug
@@ -67,16 +84,6 @@ so ~/.config/nvim-java/init.lua
 
 ## LSP
 
-```neovim
-set ft=java
-messages
-LspInfo
-checkhealth vim.lsp
-```
-1 Força o reconhecimento do arquivo aberto como java.
-2 Permite verificar se o jdtls foi carregado corretamente.
-3 Maneira mais detalhada de ver se o jdtls foi carregado corretamente.
-4 Mesmo que LspInfo.
 
 
 
