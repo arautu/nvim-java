@@ -59,6 +59,10 @@ vim.o.inccommand = "split" -- Preview substitutions live, as you type!
 vim.o.cursorline = true -- Show which line your cursor is on
 vim.o.scrolloff = 10 -- Minimal number of screen lines to keep above and below the cursor.
 
+-- Clear highlights on search when pressing <Esc> in normal mode
+--  See `:help hlsearch`
+vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
+
 vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" }) -- Diagnostic keymaps
 vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" }) -- Exit terminal mode
 

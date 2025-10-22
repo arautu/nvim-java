@@ -11,16 +11,12 @@ Para mais detalhes sobre a nova forma de configuração do LSP, veja no próprio
 
 ## JDTLS
 
-Foi instalado o [JDTLS](https://github.com/eclipse-jdtls/eclipse.jdt.ls/wiki), como um servidor de LSP (Language Server Protocol), para Java, chamado **eclipse.jdt.ls** e para cliente, foi usado o [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig), nativo do Nvim. Para a configuração do JDTLS, seguiu-se as orientação do [documento de configuração do JDTLS para o nvim-lspconfig](https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#jdtls) e foi consultado também a [configuração pré-existente do JDTLS no nvim-lpsconfig](https://github.com/neovim/nvim-lspconfig/blob/master/lsp/jdtls.lua#L89).
+Foi instalado o [JDTLS](https://github.com/eclipse-jdtls/eclipse.jdt.ls/wiki), como um servidor de LSP (Language Server Protocol), para Java, chamado **eclipse.jdt.ls** e o cliente nativo do Nvim. A configuração dos servidores ficou a cargo do pacote [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig). Para usá-lo, basta consultar o nome do servidor em nvim-lspconfig/lsp e habilitá-lo, conforme mostrado a seguir. Mais informações no [documento de configuração do JDTLS para o nvim-lspconfig](https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#jdtls).
 
-Estas configurações colocam o workspace em `~/.cache/nvim-java/jdtls/workspace`.
+```lua
+vim.lsp.enable({ "jdtls" })
 
-Em `~\.bashrc` foi colocado a seguinte variável de ambiente.
-
-```bash
-export JDTLS_JVM_ARGS="-Xmx1g --add-modules=ALL-SYSTEM --add-opens java.base/java.util=ALL-UNNAMED --add-opens java.base/java.lang=ALL-UNNAMED"
 ```
-
 ### Teclas de atalho
 
 As teclas de atalho e suas funções, detalhadas em [nvim-jdtls](https://github.com/mfussenegger/nvim-jdtls), estão funcionando automaticamente, sem qualquer configuração extra, graças ao [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig). No entanto, as teclas usada como atalhos são diferentes daquelas menciondas em nvim-jdtls. Mais detalhes sobre as teclas de atalho padrão para o LSP, encontra-se em `help lsp-quickstart`.
