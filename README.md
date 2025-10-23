@@ -15,8 +15,8 @@ Foi instalado o [JDTLS](https://github.com/eclipse-jdtls/eclipse.jdt.ls/wiki), c
 
 ```lua
 vim.lsp.enable({ "jdtls" })
-
 ```
+
 ### Teclas de atalho
 
 As teclas de atalho e suas funções, detalhadas em [nvim-jdtls](https://github.com/mfussenegger/nvim-jdtls), estão funcionando automaticamente, sem qualquer configuração extra, graças ao [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig). No entanto, as teclas usada como atalhos são diferentes daquelas menciondas em nvim-jdtls. Mais detalhes sobre as teclas de atalho padrão para o LSP, encontra-se em `help lsp-quickstart`.
@@ -50,41 +50,8 @@ checkhealth vim.lsp
 3 Maneira mais detalhada de ver se o jdtls foi carregado corretamente.
 4 Mesmo que LspInfo.
 
-
-# Debug
-
-> Notes about debugging: the -agentlib: is for connecting a java debugger agent to the process, and if you wish to debug the server from the start of execution, set suspend=y so that the JVM will wait for your debugger prior to starting the server. [jdtls](https://github.com/eclipse-jdtls/eclipse.jdt.ls/wiki "eclipse.jdt.ls wiki")
-
-# Lazy.nvim
-[lazy.nvim](https://github.com/folke/lazy.nvim)
-
-A configuração do Lazy.nvim se encontra no arquivo ~/.config/nvim/lua/configu/lazy.lua e seguiu basicamente a orientação da documentação oficial. [lazy.nvim]
-
-## Plugins
-
-Lazy.nvim irá procurar automaticamente os plugins declarados na pasta *~/.config/nvim/plugins* [lazy.nvim]
-
-### lsp.lua
-[mason-lspconfig](https://github.com/mason-org/mason-lspconfig.nvim)
-[nvim-lspconfig](https://github.com/neovim/nvim-lspconfig)
-[mason.nvim](mason-org/mason.nvim)
-
-Em ~/.config/nvim/plugins/lsp.lua*, se encontram os plugins que facilitarão a instalação dos servidores de linguagens de prograação do LSP.
-
-# Comandos importantes
+Recarregar o arquivo init.lua
 
 ```neovim
 so ~/.config/nvim-java/init.lua
 ```
-1 Recarregar init.lua
-
-## LSP
-
-
-
-
-# Plugins instalados
-
-* Lazy
-* Mason
-* jdtls-nvim

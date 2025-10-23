@@ -36,6 +36,8 @@ end)
 vim.o.breakindent = true -- Enable break indent
 vim.o.undofile = true -- save undo history
 
+vim.g.have_nerd_font = true -- Set to true if you have a Nerd Font installed and selected in the terminal
+
 -- Case-insensitive searching UNLESS \C or one or more capital letters in the search term
 vim.o.ignorecase = true
 vim.o.smartcase = true
@@ -87,4 +89,15 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 vim.lsp.enable({
 	"lua_ls",
 	"jdtls",
+})
+
+vim.diagnostic.config({
+	-- Use the default configuration
+	-- virtual_lines = true,
+
+	-- Alternatively, customize specific options
+	virtual_lines = {
+	 -- Only show virtual line diagnostics for the current cursor line
+	 current_line = true,
+	},
 })
